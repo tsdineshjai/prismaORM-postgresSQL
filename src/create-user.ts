@@ -5,36 +5,28 @@ const prisma = new PrismaClient();
 async function main() {
 	// ... you will write your Prisma Client queries here
 
-	//creating a user, should match the schema
+	//creating a user, should match the schema and doing posts as well
 	await prisma.user.create({
 		data: {
-			name: "shreya sri",
-			email: "shereya@gmail.com",
+			name: "dummy usser",
+			email: "dummy@gmail.com",
 
 			profile: {
-				create: { bio: "she likes movies" },
+				create: { bio: "dummy likes anything" },
 			},
 			posts: {
 				create: {
-					title: "a beautiful programming journey",
-					content: "A life thats happily ever",
+					title: "a wild hog",
+					content: "a story that aynone can inspire on",
 				},
 			},
 		},
 	});
-
-	const allUsers = await prisma.user.findMany({
-		include: {
-			posts: true,
-			profile: true,
-		},
-	});
-	//checks the records of the user table and returns the records in an array
-	console.log(allUsers);
 }
 
 main()
 	.then(async () => {
+		console.log(`user was created succesfully`);
 		await prisma.$disconnect();
 	})
 	.catch(async (e) => {
