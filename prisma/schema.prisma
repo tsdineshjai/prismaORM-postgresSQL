@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Post {
-  id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement()) //@id refers to the primary key
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
   title String   @db.VarChar(255)
