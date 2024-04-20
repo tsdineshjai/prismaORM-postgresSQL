@@ -5,7 +5,7 @@ const client = new PrismaClient();
 async function main() {
 	const post = await client.post.update({
 		where: { id: 1 },
-		data: { published: true },
+		data: { content: "A underdog story: rose from the underneath hell" },
 	});
 
 	console.log(post);
